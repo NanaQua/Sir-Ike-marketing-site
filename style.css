@@ -1,137 +1,76 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #F8F9FA;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light gray background */
 }
 
 header {
-    background-color: #FFEB3B;
-    padding: 1.5em;
+    background: #FFD700; /* Gold background for header */
+    color: white;
+    padding: 20px;
     text-align: center;
-    color: #333;
-    border-bottom: 4px solid #FFD700;
 }
 
-header h1 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
+nav a {
+    color: white;
     margin: 0 15px;
-}
-
-nav ul li a {
     text-decoration: none;
-    color: #333;
     font-weight: bold;
-    font-size: 1.1em;
-}
-
-.search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-}
-
-#search-input {
-    width: 50%;
-    height: 2.5em;
-    padding: 0.5em;
-    font-size: 1.2em;
-    border: 2px solid #FFEB3B;
-    border-radius: 5px;
-    outline: none;
-}
-
-#search-input:focus {
-    border-color: #FFD700;
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-}
-
-#search-button {
-    background-color: #FFEA00;
-    color: #333;
-    border: 2px solid #FFD700;
-    padding: 0.5em 1em;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-left: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-#search-button:hover {
-    background-color: #FFD700;
-    color: #fff;
 }
 
 main {
-    padding: 40px 20px;
+    padding: 20px;
 }
 
-#product-description {
-    margin-bottom: 30px;
+#products {
+    display: flex; /* Use flexbox for product layout */
+    flex-wrap: wrap; /* Allow products to wrap to the next line */
+    justify-content: space-around; /* Space products evenly */
+}
+
+.product {
+    background: white; /* White background for product cards */
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 200px; /* Fixed width for product cards */
+    transition: transform 0.3s; /* Smooth scaling effect */
+}
+
+.product:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.product h3 {
+    color: #333; /* Darker text for product names */
+}
+
+button {
+    background: #FFD700; /* Gold button */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded button */
+    transition: background 0.3s; /* Smooth transition */
+    font-weight: bold;
+}
+
+button:hover {
+    background: #FFC107; /* Slightly darker gold on hover */
 }
 
 footer {
-    background-color: #FFEB3B;
-    color: #333;
     text-align: center;
-    padding: 1.5em;
-    font-size: 0.9em;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
-a {
-    color: #333;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-#search-results {
-    margin-top: 30px;
-}
-
-#results-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-#results-list li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
     padding: 10px;
-}
-
-#results-list li a {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #0066cc;
-}
-
-#results-list li p {
-    font-size: 1em;
-    color: #555;
+    background: #333; /* Dark background for footer */
+    color: white;
+    position: relative; /* Changed to relative for better layout */
+    width: 100%;
+    bottom: 0;
+    margin-top: 20px; /* Space above footer */
 }

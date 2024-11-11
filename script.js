@@ -1,66 +1,49 @@
-// Use the provided API Key and Search Engine ID
-const API_KEY = 'AIzaSyDrUIFyKctoHUk6VcMRQOqzq5Ck5cJSn_Q';
-const SEARCH_ENGINE_ID = '20e8b8052bc924865';
+let cartCount = 0;
 
-// Select input and button elements
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
-const searchResults = document.getElementById('search-results');
+// Function to update cart count
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cartCount;
+}
 
-// Event listener for search button
-searchButton.addEventListener('click', () => {
-    const query = searchInput.value.trim();
-    if (query) {
-        performSearch(query);
-    }
+// Add event listeners to "Add to Cart" buttons
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const product = button.parentElement;
+        const productName = product.getAttribute('data-name');
+        const productPrice = product.getAttribute('data-price');
+
+        // Update cart count
+        cartCount++;
+        updateCartCount();
+
+        alert(`${productName} has been added to your cart for ${productPrice} GHS.`);
+    });
 });
 
-// Function to perform Google Custom Search
-async function performSearch(query) {
-    // Build the API URL
-    const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${SEARCH_ENGINE_ID}`;
+// Search functionality
+document.getElementById('search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const products = document.querySelectorAll('.product');
 
-    try {
-        // Fetch data from Google Custom Search API
-        const response = await fetch(url);
-        const data = await response.json();
+    products.forEach(product => {
+        const material = product.getAttribute('data-material').toLowerCase();
+        if (material.includes(searchTerm)) {
+            product.style.display = 'block'; // Show product
+        } else {
+            product.style.display = 'none'; // Hide product
+        }
+    });
+});
 
-        // Display search results
-        displayResults(data);
-    } catch (error) {
-        console.error('Error fetching search results:', error);
-    }
-}
+// Currency selector functionality
+document.getElementById('currency-selector').addEventListener('change', function() {
+    const selectedCurrency = this.value;
+    const prices = document.querySelectorAll('.price');
 
-// Function to display search results on the page
-function displayResults(data) {
-    // Clear any previous results
-    searchResults.innerHTML = '';
-
-    // Check if results were found
-    if (data.items) {
-        data.items.forEach(item => {
-            // Create a div to hold each result
-            const resultDiv = document.createElement('div');
-            resultDiv.classList.add('result');
-
-            // Add the result title as a clickable link
-            const title = document.createElement('a');
-            title.href = item.link;
-            title.target = '_blank';
-            title.textContent = item.title;
-            resultDiv.appendChild(title);
-
-            // Add a snippet of the result
-            const snippet = document.createElement('p');
-            snippet.textContent = item.snippet;
-            resultDiv.appendChild(snippet);
-
-            // Append the result div to the search results container
-            searchResults.appendChild(resultDiv);
-        });
-    } else {
-        // If no results found, display a message
-        searchResults.innerHTML = '<p>No results found.</p>';
-    }
-}
+    prices.forEach(price => {
+        const originalPrice = price.textContent;
+        if (selectedCurrency === 'GHS') {
+            price.textContent = originalPrice; // Keep price as is for GHS
+            price.nextElementSibling.textContent = 'GHS'; // Update currency text
+        } else {
+            price.textContent = (originalPrice * 
