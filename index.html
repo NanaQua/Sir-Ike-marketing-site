@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir Ike Marketing Site</title>
     <link rel="stylesheet" href="./style.css">
+    <!-- <link rel = "script src="./script.js"></script>" -->
 </head>
 <body>
     <header>
-        <h1>Sir Ike Marketing Site</h1>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -16,41 +16,22 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search products...">
-            <button id="search-button">Search</button>
-        </div>
     </header>
+    
     <main>
-        <!-- Product Description Section -->
-        <section id="product-description">
-            <h2>Our Products</h2>
-            <p>At Sir Ike Marketing, we pride ourselves on offering high-quality products that are both affordable and easily accessible. Our products undergo rigorous quality checks to ensure they meet the highest standards. We believe in providing value for money, making sure you get the best products at the best prices.</p>
-            <p>We also offer fast and reliable delivery services, ensuring that your orders reach you promptly and in perfect condition. Shop with us for a seamless and satisfying experience.</p>
-        </section>
-        <!-- Google search iframe -->
-        <iframe id="google-search" frameborder="0" width="100%" height="500"></iframe>
+        <!-- Google Custom Search Element -->
+        <h2>Search Our Site</h2>
+        <script async src="https://cse.google.com/cse.js?cx=20e8b8052bc924865"></script>
+        <div class="gcse-search"></div>
     </main>
+    
     <footer>
         <p>Contact Information:</p>
-        <p>Phone: 0227987730</p>
+        <p>Phone: 0247987730</p>
         <p>Email: <a href="mailto:info@sirikemarketing.com">info@sirikemarketing.com</a></p>
-        <p>SMS: 0227987730</p>
-    </footer>
-    <script>
-        // Get search input and button elements
-        const searchInput = document.getElementById('search-input');
-        const searchButton = document.getElementById('search-button');
-        const googleSearchIframe = document.getElementById('google-search');
+        <p>SMS: 0247987730</p>
 
-        // Add event listener to search button
-        searchButton.addEventListener('click', () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                // Update iframe src with search query
-                googleSearchIframe.src = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            }
-        });
-    </script>
+    </footer>
 </body>
 </html>
+<script src="./script.js"></script>
